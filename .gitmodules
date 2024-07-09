@@ -1,8 +1,0 @@
-[submodule "otter"]
-	path = otter
-	url = git@github.com:astro-otter/otter.git
-	branch = main
-[submodule "otterdb"]
-	path = otterdb
-	url = git@github.com:astro-otter/otterdb.git
-	branch = main
