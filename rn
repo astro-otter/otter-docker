@@ -1,0 +1,17 @@
+#!/bin/bash
+if [[ ! -z "$(docker images -q astro-otter:latest 2> /dev/null)" ]]; then
+   echo "No container found for astro-otter! Please run ./build.sh first!"
+   exit 1
+fi
+
+if [[ `git status --porcelain` ]]; then
+   echo "WARNING! There are changes in git, you may mean to run build.sh instead!"
+fi
+
+# then run it
+if [[ -z $1 ]]; then
+    # run interactively if nothing is passed to this file
+    sudo docker run -it -p 8989:8989  astro-otter
+else
+    sudo docker run -p 8989:8989 astro-otter
+fi

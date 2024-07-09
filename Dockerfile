@@ -27,5 +27,5 @@ RUN pip install --no-cache-dir $(pwd)
 
 # move into a user working directory and start jupyter lab when it is run
 WORKDIR /home/default-user
-CMD jupyter lab --ip="*" --port=8989 --allow-root
+CMD jupyter lab --no-browser --ip="*" --port=8989 --allow-root welcome.ipynb
 EXPOSE 8989

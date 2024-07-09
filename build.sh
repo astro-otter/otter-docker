@@ -7,6 +7,7 @@ if [[ -z "$(docker images -q astro-otter:latest 2> /dev/null)" ]]; then
     # if the docker container exists and the repo has no local changes we can leave it
     if [[ ! `git status --porcelain` ]]; then
         echo "No local git changes so no need to rebuild the docker image!"
+        echo "Are you sure you didn't mean to just run `./rn`?"
         exit 1
     fi
     
@@ -17,11 +18,5 @@ fi
 # then build it
 sudo docker image build -t astro-otter .
 
-# then run it
-if [[ -z $1 ]]; then
-    # run interactively if anything is passed to this file
-    sudo docker run -it -p 8989:8989  astro-otter
-else
-    sudo docker run -p 8989:8989 astro-otter
-fi
-
+# then run it interactively
+./rn
