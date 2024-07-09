@@ -25,6 +25,9 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install --no-cache-dir $(pwd)
 
+# add environment variables for OTTER
+ENV OTTER_DATA_DIR="/home/default-user/data/"
+
 # move into a user working directory and start jupyter lab when it is run
 WORKDIR /home/default-user
 CMD jupyter lab --no-browser --ip="*" --port=8989 --allow-root welcome.ipynb

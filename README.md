@@ -14,7 +14,7 @@ Make sure git is installed and then in a terminal run
 git clone https://github.com/astro-otter/otter-docker.git
 ```
 
-You should just be able to run the following commands
+Then to run the docker image you should just be able to run the following commands
 ```
 cd otter-docket
 ./build.sh
