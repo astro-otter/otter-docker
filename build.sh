@@ -20,8 +20,8 @@ sudo docker image build -t astro-otter .
 # then run it
 if [[ -z $1 ]]; then
     # run interactively if anything is passed to this file
-    sudo docker run -it astro-otter
+    sudo docker run -it -p 8989:8989  astro-otter
 else
-    sudo docker run astro-otter
+    sudo docker run -p 8989:8989 astro-otter
 fi
 

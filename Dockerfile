@@ -24,5 +24,7 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install --no-cache-dir $(pwd)
 
-# move into a user working directory
+# move into a user working directory and start jupyter lab when it is run
 WORKDIR /home/default-user
+CMD jupyter lab --ip="*" --port=8989 --allow-root
+EXPOSE 8989
