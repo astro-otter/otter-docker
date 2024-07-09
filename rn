@@ -4,8 +4,9 @@ if [[ ! -z "$(docker images -q astro-otter:latest 2> /dev/null)" ]]; then
    exit 1
 fi
 
-if [[ `git status --porcelain` ]]; then
-   echo "WARNING! There are changes in git, you may mean to run build.sh instead!"
+if [[ `git diff` ]]; then
+    echo "WARNING! There are changes on the otter-docker github! \
+         you may want to pull the repo and rerun build.sh instead!"
 fi
 
 # then run it
