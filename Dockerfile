@@ -6,9 +6,10 @@ RUN mkdir /home/default-user/
 RUN mkdir /home/default-user/data
 RUN mkdir /home/default-user/astro-otter
 
-# copy over the otter and otterdb
+# copy over the otter, otterdb, and examples
 ADD otter /home/default-user/astro-otter
 ADD otterdb/.otter /home/default-user/data
+ADD examples /home/default-user/
 
 # working directory for installs
 WORKDIR /home/default-user/astro-otter/

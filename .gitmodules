@@ -6,3 +6,7 @@
 	path = otterdb
 	url = https://github.com/astro-otter/otterdb.git
 	branch = main
+[submodule "examples"]
+	path = examples
+	url = https://github.com/astro-otter/examples.git
+	branch = main
