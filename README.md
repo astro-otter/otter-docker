@@ -8,16 +8,33 @@ Code to setup and install the otter docker container.
 * Windows: https://docs.docker.com/desktop/install/windows-install/
 
 ## Building the Docker Container
+There are two aspects to this project, the database/API server docker container (hosted at https://github.com/astro-otter/otterdb)
+and the webapp docker (hosted in this repo). Both containers need to be started and connected as part of a docker network.
+This readme will walk you through the commands needed to do this.
+
 ### Linux/macOS
-Run the following command to get the docker container from this GitHub
+First, we need to create a docker network
+```
+docker network create otter-net
+```
+
+Then, to start the database/API server run
+```
+git clone https://github.com/astro-otter/otterdb.git
+cd otterdb
+./build.sh
+```
+
+Next, run the following command to get the docker container from this GitHub
 ```
 docker build https://github.com/astro-otter/otter-docker.git#main -t astro-otter
 ```
-Then you can run the image using
+
+Finally, you can run the image using
 ```
-docker run -it -p 8989:8989  astro-otter
+docker run -it -p 8989:8989 --network otter-net astro-otter
 ```
-Which will allow you to open the jupyter lab server at the url it displays and play around with OTTER!
+Which will allow you to open the web app at the url it displays and play around with OTTER!
 
 **Note 1**: You may need to run the above docker commands either as root user or using `sudo ...`, it depends on your
 docker installation.
