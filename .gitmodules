@@ -10,3 +10,6 @@
 	path = examples
 	url = https://github.com/astro-otter/examples.git
 	branch = main
+[submodule "otter-web"]
+	path = otter-web
+	url = https://github.com/astro-otter/otter-web
