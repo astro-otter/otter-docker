@@ -60,6 +60,8 @@ ERROR: failed to solve: failed to resolve source metadata for docker.io/docker/d
 ```
 try running `sudo chown -R $(id -u):$(id -g) $HOME/.docker` and then rerunning the above two commands.
 
+**Note 3**: If you get an error like "otter-persist is already in use" that means you need to delete the existing docker containers. To do this, navigate to the "otterdb" directory and run "./clean.sh".
+
 ### Windows
 If you use wsl2 (I think that's the only way to run docker on windows from the
 command line) just go and follow the instructions for Linux/macOS and it should
