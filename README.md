@@ -30,11 +30,20 @@ Next, run the following command to get the docker container from this GitHub
 docker build https://github.com/astro-otter/otter-docker.git#main -t astro-otter
 ```
 
-Finally, you can run the image using
+You can run the image using
 ```
-docker run -it -p 8989:8989 --network otter-net astro-otter
+docker run -it -p 8080:8080 --network otter-net astro-otter
 ```
 Which will allow you to open the web app at the url it displays and play around with OTTER!
+
+To also install the python API to query your local version of the OTTER database use
+```
+git clone https://github.com/astro-otter/otter.git
+cd otter
+python3 -m pip install .
+```
+
+### FAQ
 
 **Note 1**: You may need to run the above docker commands either as root user or using `sudo ...`, it depends on your
 docker installation.
