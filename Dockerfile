@@ -18,7 +18,8 @@ ADD otterdb /home/default-user/otterdb
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
-    git
+    git \
+    pkg-config
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools setuptools_scm wheel
