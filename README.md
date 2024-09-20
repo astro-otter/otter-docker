@@ -22,6 +22,7 @@ Then, to start the database/API server run
 ```
 git clone https://github.com/astro-otter/otterdb.git
 cd otterdb
+python3 -m pip install -r requirements.txt
 ./build.sh
 ```
 
