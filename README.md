@@ -28,7 +28,7 @@ python3 -m pip install -r requirements.txt
 
 Next, run the following command to get the docker container from this GitHub
 ```
-docker build https://github.com/astro-otter/otter-docker.git#main -t astro-otter
+docker build https://github.com/astro-otter/otter-docker.git#main -t astro-otter --no-cache
 ```
 
 You can run the image using
