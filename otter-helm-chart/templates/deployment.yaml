@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otter-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otter
+  template:
+    metadata:
+      labels:
+        app: otter
+    spec:
+      containers:
+
+        - name: otterdb
+          image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
+          ports:
+            - containerPort: {{ .Values.arangoImage.port }}
+
+        - name: otterweb
+          image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
+          ports:
+            - containerPort: {{ .Values.otterImage.port }}
