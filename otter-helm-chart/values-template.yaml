@@ -2,6 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+### Secret Environment Variables
+### Copy this template file and define all of these before running!
+secret:
+  root_user: ""
+  root_user_password: ""
+  average_user: ""
+  average_user_password: ""
+
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
 
@@ -21,7 +29,6 @@ arangoImage:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   port: 8529
-
 
 # This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []

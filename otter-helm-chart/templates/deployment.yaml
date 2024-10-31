@@ -18,6 +18,27 @@ spec:
           image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
           ports:
             - containerPort: {{ .Values.arangoImage.port }}
+          env:
+            - name: "ARANGO_ROOT_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: root_user
+            - name: "ARANGO_ROOT_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: root_user_password
+            - name: "ARANGO_USER_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: average_user
+            - name: "ARANGO_USER_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: average_user_password
 
         - name: otterweb
           image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
