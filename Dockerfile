@@ -31,7 +31,7 @@ RUN pip install --no-cache-dir $(pwd)
 
 ### Start the website server
 WORKDIR /home/default-user/
-RUN git clone -b docker https://github.com/astro-otter/otter-web.git
+RUN git clone https://github.com/astro-otter/otter-web.git
 WORKDIR /home/default-user/otter-web
 RUN pip install --no-cache-dir $(pwd)
 CMD python3 start.py

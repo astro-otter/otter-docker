@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otterweb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otterweb
+  template:
+    metadata:
+      labels:
+        app: otterweb
+    spec:
+      containers:
+        - name: otterweb
+          image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
+          ports:
+            - containerPort: {{ .Values.otterImage.port }}

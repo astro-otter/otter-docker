@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: otter-deployment
+  name: otterdb-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: otter
+      app: otterdb
   template:
     metadata:
       labels:
-        app: otter
+        app: otterdb
     spec:
       containers:
 
@@ -39,8 +39,3 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: average_user_password
-
-        - name: otterweb
-          image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
-          ports:
-            - containerPort: {{ .Values.otterImage.port }}
