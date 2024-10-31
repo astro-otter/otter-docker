@@ -5,7 +5,12 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - name: otterweb-port
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.otterImage.port }}
       protocol: TCP
-      name: http
+    - name: otterdb-port
+      port: {{ .Values.arangoImage.port }}
+      targetPort: {{ .Values.arangoImage.port }}
+      protocol: TCP
+     
