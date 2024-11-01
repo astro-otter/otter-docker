@@ -16,9 +16,12 @@ spec:
 
         - name: otterdb
           image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
+          imagePullPolicy: {{ .Values.arangoImage.pullPolicy }}
           ports:
             - containerPort: {{ .Values.arangoImage.port }}
           env:
+            - name: DB_LINK_PORT_8529_TCP
+              value: {{ .Values.env.arango_url }}
             - name: "ARANGO_ROOT_USERNAME"
               valueFrom:
                 secretKeyRef:
@@ -39,3 +42,8 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: average_user_password
+            - name: "OTTERDB_PASS"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: root_user_password

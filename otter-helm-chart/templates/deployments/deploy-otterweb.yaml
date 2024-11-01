@@ -15,5 +15,14 @@ spec:
       containers:
         - name: otterweb
           image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
+          imagePullPolicy: {{ .Values.otterImage.pullPolicy }}
           ports:
             - containerPort: {{ .Values.otterImage.port }}
+          env:
+            - name: ARANGO_URL
+              value: {{ .Values.env.arango_url }}
+            - name: "OTTERDB_PASS"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: root_user_password

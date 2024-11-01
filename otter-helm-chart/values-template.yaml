@@ -10,6 +10,10 @@ secret:
   average_user: ""
   average_user_password: ""
 
+# other environment vars
+env:
+  arango_url: "tcp://127.0.0.1:8529"
+
 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
 
@@ -17,7 +21,7 @@ replicaCount: 1
 otterImage:
   repository: noahfranz13/astro-otter
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   port: 8080
