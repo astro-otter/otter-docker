@@ -27,9 +27,9 @@ otterImage:
   port: 8080
 
 arangoImage:
-  repository: arangodb
+  repository: noahfranz13/otterdb
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   port: 8529

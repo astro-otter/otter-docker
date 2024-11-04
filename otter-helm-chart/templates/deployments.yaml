@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: otterdb-deployment
+  name: otter-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: otterdb
+      app: otter
   template:
     metadata:
       labels:
-        app: otterdb
+        app: otter
     spec:
       containers:
-
+      
         - name: otterdb
           image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
           imagePullPolicy: {{ .Values.arangoImage.pullPolicy }}
@@ -42,6 +42,20 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: average_user_password
+            - name: "OTTERDB_PASS"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: root_user_password
+
+        - name: otterweb
+          image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
+          imagePullPolicy: {{ .Values.otterImage.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.otterImage.port }}
+          env:
+            - name: ARANGO_URL
+              value: {{ .Values.env.arango_url }}
             - name: "OTTERDB_PASS"
               valueFrom:
                 secretKeyRef:

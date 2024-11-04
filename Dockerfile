@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
     pkg-config
 
 RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools setuptools_scm wheel
+RUN pip install --upgrade setuptools setuptools_scm wheel pyArango
 
 ### Install API
 # working directory for installs
