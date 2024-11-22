@@ -4,7 +4,6 @@ metadata:
   name: otter-service
 spec:
   type: {{ .Values.service.type }}
-  clusterIP: 10.106.49.99
   selector:
     app: otter
   ports:
