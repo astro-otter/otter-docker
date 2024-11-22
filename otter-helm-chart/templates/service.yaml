@@ -4,13 +4,15 @@ metadata:
   name: otter-service
 spec:
   type: {{ .Values.service.type }}
+  clusterIP: 10.106.49.99
+  selector:
+    app: otter
   ports:
-    - name: otterweb-port
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.otterImage.port }}
-      protocol: TCP
-    - name: otterdb-port
+    - name: otter
       port: {{ .Values.arangoImage.port }}
       targetPort: {{ .Values.arangoImage.port }}
       protocol: TCP
-     
+    - name: otterweb
+      port: {{ .Values.otterImage.port }}
+      targetPort: {{ .Values.otterImage.port }}
+      protocol: TCP

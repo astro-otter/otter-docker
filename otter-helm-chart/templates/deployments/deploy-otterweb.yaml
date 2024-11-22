@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otterweb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otter
+  template:
+    metadata:
+      labels:
+        app: otter
+    spec:
+      containers:      
+        - name: otterweb
+          image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
+          imagePullPolicy: {{ .Values.otterImage.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.otterImage.port }}
+          env:
+            - name: ARANGO_URL
+              value: http://{{ .Values.env.arango_url }}:{{ .Values.arangoImage.port }}
+            - name: "OTTERDB_PASS"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: root_user_password

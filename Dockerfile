@@ -10,8 +10,6 @@ RUN mkdir /home/default-user/otterdb
 
 # copy over the otter, otterdb, and examples
 ADD otter /home/default-user/astro-otter
-ADD examples /home/default-user/
-ADD otterdb /home/default-user/otterdb
 
 # install dependences
 # Install dependencies and the GPG key
