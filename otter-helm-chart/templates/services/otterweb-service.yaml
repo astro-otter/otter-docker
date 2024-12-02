@@ -1,16 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: otter-service
+  name: otterweb-service
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.webtype }}
   selector:
     app: otter
   ports:
-    - name: otter
-      port: {{ .Values.arangoImage.port }}
-      targetPort: {{ .Values.arangoImage.port }}
-      protocol: TCP
     - name: otterweb
       port: {{ .Values.otterImage.port }}
       targetPort: {{ .Values.otterImage.port }}

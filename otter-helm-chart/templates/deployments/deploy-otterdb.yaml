@@ -12,6 +12,10 @@ spec:
       labels:
         app: otter
     spec:
+      volumes:
+        - name: otterdb-storage
+          persistentVolumeClaim:
+          claimName: otterdb-pv-claim
       containers:      
         - name: otterdb
           image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
