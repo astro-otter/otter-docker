@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: otterdb-deployment
 spec:
+  serviceName: otterdb
   replicas: 1
   selector:
     matchLabels:
@@ -22,6 +23,9 @@ spec:
           imagePullPolicy: {{ .Values.arangoImage.pullPolicy }}
           ports:
             - containerPort: {{ .Values.arangoImage.port }}
+          volumeMounts:
+            - name: {{ .Values.storage.name }}
+              mountPath: {{ .Values.storage.path }}
           env:
             - name: DB_LINK_PORT_8529_TCP
               value: http://{{ .Values.env.arango_url }}:{{ .Values.arangoImage.port }}
@@ -50,3 +54,12 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: root_user_password
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ .Values.storage.name }}
+    spec:
+      accessModes:
+        - {{ .Values.storage.accessMode }}
+      resources:
+        requests:
+          storage: {{ .Values.storage.size }}
