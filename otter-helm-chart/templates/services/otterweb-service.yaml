@@ -5,7 +5,7 @@ metadata:
 spec:
   type: {{ .Values.service.webtype }}
   selector:
-    app: otter
+    app: otterweb
   ports:
     - name: otterweb
       port: {{ .Values.otterImage.port }}

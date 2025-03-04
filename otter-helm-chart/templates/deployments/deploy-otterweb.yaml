@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: otter
+      app: otterweb
   template:
     metadata:
       labels:
-        app: otter
+        app: otterweb
     spec:
       containers:      
         - name: otterweb

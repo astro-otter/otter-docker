@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: otter
+      app: otterdb
   template:
     metadata:
       labels:
-        app: otter
+        app: otterdb
     spec:
       volumes:
         - name: otterdb-storage

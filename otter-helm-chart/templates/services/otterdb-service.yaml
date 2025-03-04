@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: otter-service
+  name: otterdb-service
 spec:
   type: {{ .Values.service.dbtype }}
   selector:
-    app: otter
+    app: otterdb
   ports:
-    - name: otter
+    - name: otterdb
       port: {{ .Values.arangoImage.port }}
       targetPort: {{ .Values.arangoImage.port }}
       protocol: TCP
