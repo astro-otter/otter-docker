@@ -27,5 +27,5 @@ spec:
                   name: secrets
                   key: root_user_password
 
-            - name: "OTTER_WEB_BASE_URL"
-	      value: {{ .Values.env.web_base_url }}
+            - name: OTTER_WEB_BASE_URL
+              value: {{ .Values.env.web_base_url }}

@@ -73,6 +73,8 @@ service:
 
 # Storage meta data
 storage:
+  name: "db-pv"
+  path: "/usr/share/otter"
   className: ""
   size: 10Gi
   accessMode: ReadWriteOnce
