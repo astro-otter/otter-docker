@@ -1,15 +1,14 @@
 ### Secret Environment Variables
 ### Copy this template file and define all of these before running!
 secret:
-  root_user: ""
-  root_user_password: ""
-  average_user: ""
+  root_user: "root"
+  root_user_password: "otterI$V3eryCool"
+  average_user: "user-guest"
   average_user_password: ""
 
 # other environment vars
 env:
   arango_url: "otterdb-service.default.svc.cluster.local"
-  web_base_url: "/otter"
 
 # This will set the replicaset count more information can be found here:
 # https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
@@ -73,6 +72,8 @@ service:
 
 # Storage meta data
 storage:
+  name: db-persistent-volume
+  path: /usr/share/otter/
   className: ""
   size: 10Gi
   accessMode: ReadWriteOnce
