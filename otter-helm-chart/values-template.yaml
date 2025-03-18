@@ -6,6 +6,11 @@ secret:
   average_user: ""
   average_user_password: ""
 
+# set a namespace for all resources 
+resource:
+  namespace: ""
+  minikube_namespace: "default"
+
 # other environment vars
 env:
   arango_url: "otterdb-service.default.svc.cluster.local"

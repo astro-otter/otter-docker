@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: otterweb-service
+  namespace: {{ .Values.resource.namespace | default .Values.resource.minikube_namespace }}
 spec:
   type: {{ .Values.service.webtype }}
   selector:

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: otterweb-deployment
+  namespace: {{ .Values.resource.namespace | default .Values.resource.minikube_namespace }}
 spec:
   replicas: 1
   selector:
@@ -27,5 +28,5 @@ spec:
                   name: secrets
                   key: root_user_password
 
-            - name: OTTER_WEB_BASE_URL
+            - name: "OTTER_WEB_BASE_URL"
               value: {{ .Values.env.web_base_url }}

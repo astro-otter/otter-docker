@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: otterdb-deployment
+  namespace: {{ .Values.resource.namespace | default .Values.resource.minikube_namespace }}
 spec:
   serviceName: otterdb
   replicas: 1
