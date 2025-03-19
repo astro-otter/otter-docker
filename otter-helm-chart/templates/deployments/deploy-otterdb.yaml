@@ -17,7 +17,7 @@ spec:
       volumes:
         - name: otterdb-storage
           persistentVolumeClaim:
-          claimName: otterdb-pv-claim
+            claimName: {{ .Values.storage.pvcName }}
       containers:      
         - name: otterdb
           image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
@@ -55,12 +55,3 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: root_user_password
-  volumeClaimTemplates:
-  - metadata:
-      name: {{ .Values.storage.name }}
-    spec:
-      accessModes:
-        - {{ .Values.storage.accessMode }}
-      resources:
-        requests:
-          storage: {{ .Values.storage.size }}

@@ -83,6 +83,7 @@ storage:
   className: ""
   size: 10Gi
   accessMode: ReadWriteOnce
+  pvcName: ""
 
 # This block is for setting up the ingress for more information can be found here:
 # https://kubernetes.io/docs/concepts/services-networking/ingress/
