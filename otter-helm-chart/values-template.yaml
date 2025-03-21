@@ -29,6 +29,20 @@ otterImage:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   port: 8080
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+  resources:
+    requests:
+      cpu: 1
+      memory: 4Gi
+    limits:
+      cpu: 1
+      memory: 4Gi
 
 arangoImage:
   repository: noahfranz13/otterdb
@@ -37,6 +51,20 @@ arangoImage:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
   port: 8529
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+  resources:
+    requests:
+      cpu: 1
+      memory: 4Gi
+    limits:
+      cpu: 1
+      memory: 4Gi
 
 # This is for the secretes for pulling an image from a private repository more information can be found here:
 # https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
