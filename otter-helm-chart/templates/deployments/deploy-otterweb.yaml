@@ -17,6 +17,14 @@ spec:
         - name: otterweb
           image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 
           imagePullPolicy: {{ .Values.otterImage.pullPolicy }}
+          {{- if .Values.otterImage.securityContext }}
+          securityContext:
+            {{- toYaml .Values.otterImage.securityContext | nindent 12 }}
+          {{- end }}
+          {{- if .Values.otterImage.resources }}
+          resources:
+            {{- toYaml .Values.otterImage.resources | nindent 12 }}
+          {{- end }}
           ports:
             - containerPort: {{ .Values.otterImage.port }}
           env:
