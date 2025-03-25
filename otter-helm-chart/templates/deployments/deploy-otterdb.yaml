@@ -22,6 +22,14 @@ spec:
         - name: otterdb
           image: {{ .Values.arangoImage.repository }}:{{ .Values.arangoImage.tag }} 
           imagePullPolicy: {{ .Values.arangoImage.pullPolicy }}
+          {{- if .Values.arangoImage.securityContext }}
+          securityContext:
+            {{- toYaml .Values.arangoImage.securityContext | nindent 12 }}
+          {{- end }}
+          {{- if .Values.arangoImage.resources }}
+          resources:
+            {{- toYaml .Values.arangoImage.resources | nindent 12 }}
+          {{- end }}
           ports:
             - containerPort: {{ .Values.arangoImage.port }}
           volumeMounts:
