@@ -25,9 +25,9 @@ replicaCount: 1
 otterImage:
   repository: noahfranz13/astro-otter
   # This sets the pull policy for images.
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "v0.1"
   port: 8080
   securityContext:
     allowPrivilegeEscalation: false
@@ -47,9 +47,9 @@ otterImage:
 arangoImage:
   repository: noahfranz13/otterdb
   # This sets the pull policy for images.
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "v0.1"
   port: 8529
   securityContext:
     allowPrivilegeEscalation: false
