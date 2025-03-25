@@ -32,4 +32,12 @@ WORKDIR /home/default-user/
 RUN git clone https://github.com/astro-otter/otter-web.git
 WORKDIR /home/default-user/otter-web
 RUN pip install --no-cache-dir $(pwd)
+
+# deal with user stuff
+RUN groupadd -g 1001 otteruser && \
+    useradd -u 1001 -g otteruser -s /bin/sh -m otteruser
+RUN chown -R otteruser:otteruser /home/
+USER otteruser
+
+# when started run:
 CMD python3 start.py
