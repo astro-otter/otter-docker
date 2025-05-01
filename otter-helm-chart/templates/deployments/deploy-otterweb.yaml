@@ -35,6 +35,16 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: root_user_password
+            - name: "ARANGO_USER_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: average_user
+            - name: "ARANGO_USER_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: average_user_password
 
             - name: "OTTER_WEB_BASE_URL"
               value: {{ .Values.env.web_base_url }}
