@@ -15,7 +15,7 @@ spec:
         app: otterdb
     spec:
       volumes:
-        - name: otterdb-storage
+        - name: {{ .Values.storage.name }}
           persistentVolumeClaim:
             claimName: {{ .Values.storage.pvcName }}
       containers:      
@@ -34,10 +34,12 @@ spec:
             - containerPort: {{ .Values.arangoImage.port }}
           volumeMounts:
             - name: {{ .Values.storage.name }}
-              mountPath: {{ .Values.storage.path }}
+              mountPath: {{ .Values.storage.arango_internal_path }}
           env:
             - name: DB_LINK_PORT_8529_TCP
               value: http://{{ .Values.env.arango_url }}:{{ .Values.arangoImage.port }}
+            - name: ARANGO_NO_AUTH
+              value: "1"
             - name: "ARANGO_ROOT_USERNAME"
               valueFrom:
                 secretKeyRef:
@@ -63,3 +65,13 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: root_user_password
+            - name: "VETTING_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: vetting_user
+            - name: "VETTING_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: vetting_user_password
