@@ -5,6 +5,8 @@ secret:
   root_user_password: ""
   average_user: ""
   average_user_password: ""
+  vetting_user: ""
+  vetting_user_password: ""
 
 # set a namespace for all resources 
 resource:
@@ -27,7 +29,7 @@ otterImage:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.1"
+  tag: "v0.2"
   port: 8080
   securityContext:
     allowPrivilegeEscalation: false
@@ -106,12 +108,13 @@ service:
 
 # Storage meta data
 storage:
-  name: "db-pv"
+  name: "otterdb-storage"
   path: "/usr/share/otter"
+  arango_internal_path: "/var/lib/arangodb3"
   className: ""
   size: 10Gi
   accessMode: ReadWriteOnce
-  pvcName: ""
+  pvcName: "otterdb-pv"
 
 # This block is for setting up the ingress for more information can be found here:
 # https://kubernetes.io/docs/concepts/services-networking/ingress/
