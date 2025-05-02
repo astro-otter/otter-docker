@@ -25,6 +25,9 @@ spec:
           resources:
             {{- toYaml .Values.otterImage.resources | nindent 12 }}
           {{- end }}
+          securityContext:
+            runAsUser: 1001
+            runAsNonRoot: true
           ports:
             - containerPort: {{ .Values.otterImage.port }}
           env:

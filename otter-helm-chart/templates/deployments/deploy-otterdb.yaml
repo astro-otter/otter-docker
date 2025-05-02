@@ -30,6 +30,9 @@ spec:
           resources:
             {{- toYaml .Values.arangoImage.resources | nindent 12 }}
           {{- end }}
+          securityContext:
+            runAsUser: 1001
+            runAsNonRoot: true
           ports:
             - containerPort: {{ .Values.arangoImage.port }}
           volumeMounts:
