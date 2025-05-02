@@ -45,6 +45,20 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: average_user_password
-
+            - name: "VETTING_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: vetting_user
+            - name: "VETTING_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: vetting_user_password
+            - name: "ADS_DEV_KEY"
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: ads_api_key
             - name: "OTTER_WEB_BASE_URL"
               value: {{ .Values.env.web_base_url }}
