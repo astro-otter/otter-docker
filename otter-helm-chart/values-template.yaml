@@ -1,11 +1,11 @@
 ### Secret Environment Variables
 ### Copy this template file and define all of these before running!
 secret:
-  root_user: ""
+  root_user: "root"
   root_user_password: ""
-  average_user: ""
+  average_user: "user-guest"
   average_user_password: ""
-  vetting_user: ""
+  vetting_user: "vetting-user"
   vetting_user_password: ""
   ads_api_key: ""
 
@@ -30,11 +30,12 @@ otterImage:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.3.4"
+  tag: "v0.4.2"
   port: 8080
   securityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
+    runAsUser: 1001
     capabilities:
       drop: ["ALL"]
     seccompProfile:
@@ -57,6 +58,7 @@ arangoImage:
   securityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
+    runAsUser: 1001
     capabilities:
       drop: ["ALL"]
     seccompProfile:
@@ -103,10 +105,10 @@ securityContext: {}
 # This is for setting up a service more information can be found here:
 # https://kubernetes.io/docs/concepts/services-networking/service/
 service:
-  dbtype: ClusterIP
+  dbtype: LoadBalancer
+  dbport: 8529
   webtype: LoadBalancer
-  port: 8080
-
+  webport: 8080
 # Storage meta data
 storage:
   name: "otterdb-storage"
