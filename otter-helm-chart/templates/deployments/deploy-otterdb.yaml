@@ -75,3 +75,5 @@ spec:
                 secretKeyRef:
                   name: secrets
                   key: vetting_user_password
+            - name: "OTTERWEB_IP"
+              value: {{ .Values.env.web_url }}

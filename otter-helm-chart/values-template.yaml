@@ -17,6 +17,7 @@ resource:
 # other environment vars
 env:
   arango_url: "otterdb-service.default.svc.cluster.local"
+  web_url: "otterweb-service.default.svc.cluster.local"
   web_base_url: "/otter"
 
 # This will set the replicaset count more information can be found here:
