@@ -163,3 +163,5 @@ cython_debug/
 
 # secrets for the helm distribution are in the values file!
 otter-helm-chart/values.yaml*
+
+otter-helm-chart-*.tgz
