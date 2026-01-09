@@ -13,6 +13,7 @@ spec:
       labels:
         app: otterweb
     spec:
+      priorityClassName: {{ .Values.otterImage.imagePriorityClassName }}
       containers:      
         - name: otterweb
           image: {{ .Values.otterImage.repository }}:{{ .Values.otterImage.tag }} 

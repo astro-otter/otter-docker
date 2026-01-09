@@ -14,6 +14,7 @@ spec:
       labels:
         app: otterdb
     spec:
+      priorityClassName: {{ .Values.arangoImage.imagePriorityClassName }}
       volumes:
         - name: {{ .Values.storage.name }}
           persistentVolumeClaim:

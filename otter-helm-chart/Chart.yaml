@@ -1,6 +1,6 @@
 apiVersion: v2
-name: otter-helm-chart
+appVersion: 1.16.0
 description: A Helm chart for Kubernetes
+name: otter-helm-chart
 type: application
-version: 0.1.0
-appVersion: "1.16.0"
+version: 0.4.0

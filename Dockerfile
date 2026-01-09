@@ -7,6 +7,7 @@ EXPOSE 8529
 RUN mkdir /home/default-user/
 RUN mkdir /home/default-user/astro-otter
 RUN mkdir /home/default-user/otterdb
+RUN mkdir /home/otteruser/
 
 # copy over the otter, otterdb, and examples
 ADD otter /home/default-user/astro-otter
@@ -26,6 +27,9 @@ RUN pip install --upgrade setuptools setuptools_scm wheel pyArango
 # working directory for installs
 WORKDIR /home/default-user/astro-otter/
 RUN pip install --no-cache-dir $(pwd)
+
+# fix some permissions issues
+RUN echo '{"data_dir": "/home/otteruser/"}' > /home/otteruser/.dustmapsrc
 
 ### Start the website server
 WORKDIR /home/default-user/

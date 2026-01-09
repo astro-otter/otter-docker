@@ -33,6 +33,7 @@ otterImage:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v0.4.2"
   port: 8080
+  imagePriorityClassName: ""
   securityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
@@ -56,6 +57,7 @@ arangoImage:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v0.3.5"
   port: 8529
+  imagePriorityClassName: ""
   securityContext:
     allowPrivilegeEscalation: false
     runAsNonRoot: true
