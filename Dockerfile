@@ -26,7 +26,7 @@ RUN pip install --upgrade setuptools setuptools_scm wheel pyArango
 ### Install API
 # working directory for installs
 WORKDIR /home/default-user/astro-otter/
-RUN pip install --no-cache-dir $(pwd)
+RUN pip install --no-cache-dir $(pwd)[standard]
 
 # fix some permissions issues
 RUN echo '{"data_dir": "/home/otteruser/"}' > /home/otteruser/.dustmapsrc
